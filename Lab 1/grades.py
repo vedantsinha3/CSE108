@@ -21,14 +21,14 @@ def create_student(grades_dict):
         grades_dict[name] = grade
         print(f"Added {name} with grade {grade}")
     except ValueError:
-        print("Invalid grade. Please enter a number.")
+        print("Invalid grade.")
 
 def get_grade(grades_dict):
     name = input("Enter student's full name: ")
     if name in grades_dict:
         print(f"{name}'s grade is: {grades_dict[name]}")
     else:
-        print(f"Student '{name}' not found.")
+        print(f"{name} not found.")
 
 def edit_grade(grades_dict):
     name = input("Enter student's full name: ")
@@ -39,7 +39,7 @@ def edit_grade(grades_dict):
             grades_dict[name] = new_grade
             print(f"Updated {name}'s grade from {old_grade} to {new_grade}")
         except ValueError:
-            print("Invalid grade. Please enter a number.")
+            print("Invalid grade.")
     else:
         print(f"Student '{name}' not found.")
 
@@ -49,7 +49,7 @@ def delete_grade(grades_dict):
         grade = grades_dict.pop(name)
         print(f"Deleted {name} (grade: {grade})")
     else:
-        print(f"Student '{name}' not found.")
+        print(f"{name} not found.")
 
 def display_all_grades(grades_dict):
     if not grades_dict:
@@ -88,7 +88,7 @@ def main():
             display_all_grades(grades)
         elif choice == '6':
             save_grades(filename, grades)
-            print("Grades saved. Goodbye!")
+            print("Grades saved.")
             break
         else:
             print("Invalid option. Please choose 1-6.")
