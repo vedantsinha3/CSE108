@@ -66,7 +66,7 @@ def main():
     print(f"Loaded {len(grades)} student records.")
     
     while True:
-        print("\n=== Grade Management System ===")
+        print("\nGrade Management System")
         print("1. Add new student")
         print("2. Get student grade")
         print("3. Edit student grade")
@@ -91,7 +91,7 @@ def main():
             print("Grades saved.")
             break
         else:
-            print("Invalid option. Please choose 1-6.")
+            print("Invalid option. Choose 1-6.")
         save_grades(filename, grades)
 
 if __name__ == "__main__":
