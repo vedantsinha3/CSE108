@@ -1,6 +1,6 @@
 3
 CSE
-030
+039
 Data Structures
 4
 Monday, Wednesday
