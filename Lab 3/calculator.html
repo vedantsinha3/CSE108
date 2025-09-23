@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 3 Calculator</title>
+  <link rel="stylesheet" href="calculator.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="calculator" role="application" aria-label="Calculator">
+      <input id="display" class="display" type="text" inputmode="decimal" aria-live="polite" readonly />
+      <div class="keys" role="group" aria-label="Calculator keys">
+        <button data-action="clear" class="key key-func">C</button>
+        <button data-action="divide" class="key key-op">/</button>
+
+        <button class="key" data-value="7">7</button>
+        <button class="key" data-value="8">8</button>
+        <button class="key" data-value="9">9</button>
+        <button data-action="multiply" class="key key-op">x</button>
+
+        <button class="key" data-value="4">4</button>
+        <button class="key" data-value="5">5</button>
+        <button class="key" data-value="6">6</button>
+        <button data-action="subtract" class="key key-op">-</button>
+
+        <button class="key" data-value="1">1</button>
+        <button class="key" data-value="2">2</button>
+        <button class="key" data-value="3">3</button>
+        <button data-action="add" class="key key-op">+</button>
+
+        <button class="key" data-value="0">0</button>
+        <button class="key" data-value=".">.</button>
+        <button data-action="equals" class="key key-eq">=</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
+
+
