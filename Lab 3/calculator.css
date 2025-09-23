@@ -88,6 +88,12 @@ body {
   color: var(--key-op-text);
 }
 
+/* Active operator highlight */
+.key-op.active {
+  outline: 3px solid rgba(25, 65, 23, 0.45);
+  filter: brightness(1.08);
+}
+
 /* Equals */
 .key-eq {
   background: var(--key-eq);

@@ -10,6 +10,7 @@
   let waitingForSecondOperand = false;
   let lastOperator = null;
   let lastSecondOperand = null;
+  let activeOperatorButton = null;
 
   function reset() {
     firstOperand = null;
@@ -18,9 +19,12 @@
     lastOperator = null;
     lastSecondOperand = null;
     display.value = '';
+    clearActiveOperator();
   }
 
   function inputDigit(digit) {
+    // number input clears operator highlight
+    if (activeOperatorButton) clearActiveOperator();
     if (waitingForSecondOperand) {
       display.value = digit === '.' ? '0.' : digit;
       waitingForSecondOperand = false;
@@ -59,6 +63,7 @@
     // Starting a fresh chain; discard repeated-equals state
     lastOperator = null;
     lastSecondOperand = null;
+    setActiveOperator(nextOperator);
   }
 
   function performCalculation(op, a, b) {
@@ -75,6 +80,23 @@
     return Math.round((value + Number.EPSILON) * 1e10) / 1e10;
   }
 
+  function setActiveOperator(action) {
+    const button = keys.querySelector('button[data-action="' + action + '"]');
+    if (activeOperatorButton === button) return;
+    if (activeOperatorButton) activeOperatorButton.classList.remove('active');
+    if (button) {
+      button.classList.add('active');
+      activeOperatorButton = button;
+    }
+  }
+
+  function clearActiveOperator() {
+    if (activeOperatorButton) {
+      activeOperatorButton.classList.remove('active');
+      activeOperatorButton = null;
+    }
+  }
+
   function handleEquals() {
     // Case 1: We have an active operator and a second operand → compute and remember
     if (operator !== null) {
@@ -88,6 +110,7 @@
       lastSecondOperand = inputValue;
       operator = null;
       waitingForSecondOperand = true; // next digit replaces
+      clearActiveOperator();
       return;
     }
 
