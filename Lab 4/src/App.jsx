@@ -141,29 +141,47 @@ export default function App() {
           inputProps={{ inputMode: 'decimal', readOnly: true, style: { textAlign: 'right', fontSize: 24, color: '#000' } }}
         />
 
-        <Box className="keys">
-          <Button className="row-span-2" color="warning" variant="contained" onClick={reset}>C</Button>
+        <Box
+          className="keys"
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 1,
+          }}
+        >
+          {/* Row 1 */}
+          <Button color="warning" variant="contained" onClick={reset}>
+            C
+          </Button>
           <OperatorButton label="/" action="divide" isActive={activeOperator === 'divide'} onClick={setOp} />
           <OperatorButton label="x" action="multiply" isActive={activeOperator === 'multiply'} onClick={setOp} />
+          <OperatorButton label="-" action="subtract" isActive={activeOperator === 'subtract'} onClick={setOp} />
 
+          {/* Row 2 */}
           {numberButton('7')}
           {numberButton('8')}
           {numberButton('9')}
-          <OperatorButton label="-" action="subtract" isActive={activeOperator === 'subtract'} onClick={setOp} />
+          <OperatorButton label="+" action="add" isActive={activeOperator === 'add'} onClick={setOp} />
 
+          {/* Row 3 */}
           {numberButton('4')}
           {numberButton('5')}
           {numberButton('6')}
-          <OperatorButton label="+" action="add" isActive={activeOperator === 'add'} onClick={setOp} />
+          <Button variant="contained" color="success" onClick={handleEquals} sx={{ gridRow: 'span 2' }}>
+            =
+          </Button>
 
+          {/* Row 4 */}
           {numberButton('1')}
           {numberButton('2')}
           {numberButton('3')}
-          {numberButton('0')}
 
+          {/* Row 5 */}
+          {numberButton('0')}
           {numberButton('.')}
-          <Button variant="contained" color="success" onClick={handleEquals}>=</Button>
+          <Box /> {/* empty spacer so the grid stays 4-wide */}
         </Box>
+
         <div className="credit">Lab 4: React + MUI Calculator</div>
       </Box>
     </Container>
